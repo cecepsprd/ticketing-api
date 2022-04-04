@@ -1,0 +1,40 @@
+CREATE TABLE `user` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phone` varchar(13) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `roles` varchar(10) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1
+
+CREATE TABLE IF NOT EXISTS `product`(
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(255) NOT NULL,
+  `price` BIGINT(20) NOT NULL,
+  `stock` INT(11) NOT NULL,
+  `image_url` VARCHAR(255),
+  `start_date` VARCHAR(255),
+  `end_date` VARCHAR(255),
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `transaction`(
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `product_id` BIGINT(20) UNSIGNED NOT NULL,
+  `user_id` BIGINT(20) UNSIGNED NOT NULL,
+  `amount` BIGINT(20) DEFAULT 0,
+  `status` VARCHAR(10) NOT NULL,
+  `code` VARCHAR(255),
+  `payment_url` VARCHAR(255),
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
